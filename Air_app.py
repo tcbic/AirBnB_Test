@@ -6,7 +6,7 @@ import xgboost as xgb
 
 # Model
 
-model = pickle.load(open('tues_model6.pkl', 'rb'))
+model = pickle.load(open('tues_model4.pkl', 'rb'))
 
 app = Flask(__name__)
 
@@ -23,9 +23,9 @@ def make_predict():
     data['washer'], data['kitchen']]
     
     # Parse the data.
-    #predict_request = np.array(predict_request).reshape(1, -1)
+    predict_request = np.array(predict_request).reshape(1, -1)
     #predict_request = xgb.DMatrix(predict_request)
-    predict_request = pd.DataFrame.from_dict(predict_request)
+    #predict_request = pd.DataFrame.from_dict(predict_request)
 
     # Predictions
     y_hat = model.predict(predict_request)
